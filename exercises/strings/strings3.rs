@@ -3,21 +3,32 @@
 // Execute `rustlings hint strings3` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
 
 fn trim_me(input: &str) -> String {
     // TODO: Remove whitespace from both ends of a string!
-    ???
+    let st=input.to_string();
+    let mut d=String::new();
+    for word in st.split_whitespace(){
+        d.push_str(word);
+        d.push_str(" ");
+    }
+    d.pop();
+    d
+  //  let t:String=st.chars().filter(|c| !c.is_whitespace()).collect();
+    
 }
 
 fn compose_me(input: &str) -> String {
     // TODO: Add " world!" to the string! There's multiple ways to do this!
-    ???
+    let mut sa=input.to_string();
+    sa.push_str(" world!");
+    sa
 }
 
 fn replace_me(input: &str) -> String {
     // TODO: Replace "cars" in the string with "balloons"!
-    ???
+    let s=input.to_string().replace("cars","balloons");
+    s
 }
 
 #[cfg(test)]
