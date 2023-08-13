@@ -20,35 +20,29 @@
 //
 // No hints this time!
 
-// I AM NOT DONE
+
 
 pub enum Command {
     Uppercase,
     Trim,
-    Append(i32),
+    Append(usize),
 }
 
 mod my_module {
     use super::Command;
 
     // TODO: Complete the function signature!
-    pub fn transformer(input:Vec<String>) -> Vec<String>{
+    pub fn transformer(input:Vec<(String,Command)>) -> Vec<String>{
         // TODO: Complete the output declaration!
         let mut output:Vec<String>= vec![];
         for (string, command) in input.iter() {
             // TODO: Complete the function body. You can do it!
-            match command{
-                Command::Uppercase=>output.insert(string.to_uppercase()),
-                Command::Trim=>output.insert(string.to_uppercase()),
-                Command::Append(n)=>
-                {
-                    let mut s=string.to_string();
-                    for i in 0..n {
-                        s.push_str("bar");
-                    }
-                    output.push(s);
-                }
-            }
+            let a =match command{
+                Command::Uppercase=>string.to_uppercase(),
+                Command::Trim=>string.trim().into(),
+                Command::Append(i)=>format!("{}{}", string.to_owned(), "bar".repeat(*i)),
+            };
+            output.push(a);
         }
         output
     }
